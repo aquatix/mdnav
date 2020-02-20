@@ -35,6 +35,9 @@ It can handle:
     mdnav handles `|filename| ...` and `{filename} ...` links as expected, for
     example `[link](|filename|./second.md)` and
     `[link]({filename}../posts/second.md)`.
+- **wiki style links**:
+    for links of the form `[[foo]]` will use `foo` as the base, append `.md` and
+    then `foo.md` will be opened.
 
 Note, all links above are functional with vim and mdnav installed.
 While mdnav is inspired by [follow-markdown-links][fml], mdnav can handle many

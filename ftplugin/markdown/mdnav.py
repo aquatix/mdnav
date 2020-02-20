@@ -265,6 +265,10 @@ def parse_link(cursor, lines):
         _logger.info('could not find link text')
         return None
 
+    m = wikilink_pattern.match(link_text)
+    if m is not None:
+        return '{}.md'.format(m.group('text').strip())
+
     m = link_pattern.match(link_text)
 
     if not m:
@@ -327,6 +331,17 @@ link_pattern = re.compile(r'''
                 )
             \]
         )
+    )
+    .*                  # any non matching characters
+    $
+''', re.VERBOSE)
+
+wikilink_pattern = re.compile(r'''
+    ^
+    (?P<link>
+        \[                      # start of link text
+            (?P<text>[^\]]*)    # link text
+        \]\]                    # end of link text
     )
     .*                  # any non matching characters
     $
