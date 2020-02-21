@@ -267,12 +267,12 @@ def parse_link(cursor, lines):
 
     m = wikilink_pattern.match(link_text)
     if m is not None:
-        target = m.group('text').strip
+        target = m.group('text').strip()
         if '.md' not in target:
-            if '#' in target
+            if '#' in target:
                 # There's an anchor, put the extension before it
                 return target.replace('#', '.md#', 1)
-            if ':' in target
+            if ':' in target:
                 # There's a line number, likewise put the extension before it
                 return target.replace(':', '.md:', 1)
             return '{}.md'.format(target)
