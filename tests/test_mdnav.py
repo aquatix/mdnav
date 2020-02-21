@@ -12,6 +12,8 @@ parse_link_cases = [
     (['foo [b^ar][bar]', '[bar]: |filename|./baz.md'], '|filename|./baz.md'),
     (['foo [b^ar][bar] [bar][baz]', '[bar]: |filename|./baz.md'], '|filename|./baz.md'),
     (['foo [b^ar][bar] [bar][baz]', '[bar]: {filename}./baz.md'], '{filename}./baz.md'),
+    (['foo [[baz]]'], 'baz.md'),
+    (['foo [[baz.md]]'], 'baz.md'),
 
     # empty link target
     (['foo [b^ar][]', '[bar]: baz.md'], 'baz.md'),
